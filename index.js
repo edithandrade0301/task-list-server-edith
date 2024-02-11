@@ -1,17 +1,15 @@
 const express = require('express');
 const app = express();
+const listViewRouter = require('./list-view-router');
+const listEditRouter = require('./list-edit-router');
 
-const tasks = [
-    {
-        id: 123456,
-        isCompleted: false,
-        description: 'Walk the dog'
-    }
-];
+app.use(express.json());
 
-app.get('/tasks', (req, res) => {
-    res.json(tasks);
-});
+//list-view-router
+app.use('/view', listViewRouter);
+
+//list-edit-router
+app.use('/edit', listEditRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {
