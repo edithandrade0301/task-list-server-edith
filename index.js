@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const listEditRouter = require('./list-edit-router');
+const listViewRouter = require('./list-view-router');
 
 const tasks = [
     {
@@ -9,9 +11,13 @@ const tasks = [
     }
 ];
 
-app.get('/tasks', (req, res) => {
-    res.json(tasks);
-});
+app.use(express.json());
+
+// Rutas para crear, actualizar y eliminar tareas
+app.use('/tasks', listEditRouter(tasks));
+
+// Rutas para ver tareas
+app.use('/tasks', listViewRouter(tasks));
 
 const PORT = 3000;
 app.listen(PORT, () => {
