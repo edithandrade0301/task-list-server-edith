@@ -7,7 +7,7 @@ const port = 3000;
 // Middleware para parsear el body de las solicitudes
 app.use(bodyParser.json());
 
-// Lista de tareas (simulada con un arreglo)
+// Lista de tareas (simulamos un arreglo)
 let tasks = [];
 
 // Endpoint para crear una nueva tarea
